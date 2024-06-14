@@ -51,3 +51,25 @@ Y aprovechando, agregamos a los lineamientos tener instalado typescript para ase
 
     tsc --init
 
+## Correr el proyecto
+
+Con la configuración previa, ya se puede correr el proyecto localmente, y visualizarlo en http://localhost:3000, usando
+
+    npm start
+
+## Una dependencia de desarrollo adicional: nodemon
+
+    npm i -D nodemon
+
+y hay que cambiar la configuración al ejecutar "start" dentro de los scripts del archivo tsconfig.json, para pasar de "ts-node index.ts" hacia "nodemon index.ts".
+
+    ...
+    "scripts": {
+        ...
+        "start": "nodemon index.ts"
+    }
+
+Así al estar ejecutandose ```npm start``` se puede enviar mediante la terminal (dentro de la carpeta del proyecto) una peticion POST como la siguiente, para que el programa devuelva una respuesta:
+
+    curl --header "Content-Type: application/json" --request POST --data '{"name": "Hola mundo"}' http://localhost:3000
+
